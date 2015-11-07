@@ -20,7 +20,7 @@ class Frontier:
     def peaching(self):
         self.manageSeed()
         self.manageAutomode()
-        self.formatResultAndPrint()
+        return self.formatResult()
 
     # FSK 18
     def cutChildFromParent(self, familyTree):
@@ -75,25 +75,20 @@ class Frontier:
                 # Add grandChildren[] to model[]
                 self.model.insert(0, grandChildren)
 
-    def formatResultAndPrint(self):
+    def formatResult(self):
         liste = sorted(self.model)
         output = ''
-        for i in range(0, len(liste)):
-            for index in range(0, len(liste[i])):
-                string = liste[i][index]
-                if string.endswith('html'):
-                    if index != len(liste[i]) - 1 :
-                        string = re.search('d[0-9]*', string).group() + ','
-                    else:
-                        string = re.search('d[0-9]*', string).group()
-                output = output + string
-            output = output + '\n'
-        sys.stdout.write(output) 
-
-        # for list in liste:
-        #     output = output + '\n'
-        #     for number in list:
-        #         if number.endswith('html'):
-        #             number = re.search('d[0-9]*', number).group()
-        #         output = output + ',' + number
-        # print'output:\n', output
+        try:
+            for i in range(0, len(liste)):
+                for index in range(0, len(liste[i])):
+                    string = liste[i][index]
+                    if string.endswith('html'):
+                        if index != len(liste[i]) - 1 :
+                            string = re.search('d[0-9]*', string).group() + ','
+                        else:
+                            string = re.search('d[0-9]*', string).group()
+                    output = output + string
+                output = output + '\n'
+        except AttributeError:
+            sys.stderr.write('Error\n')
+        return output

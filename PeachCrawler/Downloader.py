@@ -18,6 +18,7 @@ class Downloader:
     # Method to download a given web-location.
     # Returns the context of the html document as string
     def download(self, webLocation):
+        #print(webLocation)
         html = ''
         try:
             url = urlopen(webLocation)

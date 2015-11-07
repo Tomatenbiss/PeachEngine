@@ -10,4 +10,4 @@ seed = [
         "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d08.html",
         ]
 frontier = Frontier(seed)
-frontier.peaching()
+print(frontier.peaching())

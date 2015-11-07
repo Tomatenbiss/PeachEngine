@@ -88,7 +88,7 @@ class Frontier:
                         string = re.search('d[0-9]*', string).group()
                 output = output + string
             output = output + '\n'
-        sys.stdout.write(output)
+        sys.stdout.write(output) 
 
         # for list in liste:
         #     output = output + '\n'

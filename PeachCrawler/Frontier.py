@@ -42,19 +42,13 @@ class Frontier:
     # Marking each element as no canditate chain
     def manageSeed(self):
         for x in range(0, len(self.seed)):
-            # Put seed-element x in proofed[]
             self.proofed.append(self.seed[x])
-            # Download x seed-element html into 'parent'
             parent = self.downloader.download(self.seed[x])
-            # Cut the name of x seed-element child into 'child'
             child = self.cutChildFromParent(self.seed[x])
-            # Pars all children from 'parent' & put them with parent-name in grandChildren[]
             grandChildren = self.parser.parsSeed(parent, child);
-            # Append all grandChildren with new parent to toProof[]
             if len(grandChildren) >= 1:
                 for index in range(1, len(grandChildren)):
                     self.toProof.append(self.staticDocumentLocation + grandChildren[index])
-            # Add grandChildren[] to model[]
             self.model.insert(0, grandChildren)
 
     # Method to download and parse all elements to proof
@@ -62,24 +56,17 @@ class Frontier:
     # element is not a candidate chain.
     def manageAutomode(self):
         while self.toProof:
-            # Get and delete the last element from toProof[]
             familyMember = self.toProof.pop()
-            # Is canditate chain ?
             if familyMember not in self.proofed:
-                # Put 'familyMember' in proofed[]
                 self.proofed.append(familyMember)
-                # Download 'familyMember' html into 'parent'
                 parent = self.downloader.download(familyMember)
-                # Cut the name of 'parent' child into 'child'
                 child = self.cutChildFromParent(familyMember)
-                # Pars all children from 'parent' & put them with parent-name in grandChildren[]
                 grandChildren = self.parser.parsSeed(parent, child);
-                # Append all grandChildren with new parent to toProof[]
                 if grandChildren:
                     for index in range(1, len(grandChildren)):
                         self.toProof.append(self.staticDocumentLocation + grandChildren[index])
-                # Add grandChildren[] to model[]
                 self.model.insert(0, grandChildren)
+
 
     # Method to generate a string representing the page structure
     def pageStructure(self):

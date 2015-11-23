@@ -92,6 +92,8 @@ class Frontier:
     # Dictionary-Value = Childs as List of Strings
     def pageStructureDic(self):
         string_list = self.pageStructure().split();
+        # very bad hack sry
+        empty = []
         lenght = len(string_list);
         link_graph = { }
 
@@ -99,6 +101,9 @@ class Frontier:
             mystring = string_list[x]
             key = mystring.split(":")
             values = key[1].split(",")
-            tmp = { key[0]: values}
+            if values[0] == '':
+                tmp = { key[0]: empty}
+            else:
+                tmp = { key[0]: values}
             link_graph.update(tmp)
         return link_graph

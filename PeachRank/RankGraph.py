@@ -1,3 +1,6 @@
+#from PeachCrawler.Frontier import Frontier
+from PeachCrawler.Frontier import Frontier
+
 __author__ = 'nina'
 
 
@@ -14,18 +17,39 @@ class Page_Rank(object):
         self.rank_graph = {}
         self.rank_graph_new = {}
 
-        self.link_graph = {'d01': ['d02', 'd03', 'd04'],
-                           'd02': ['d03', 'd04', 'd01', 'd05'],
-                           'd03': ['d04', 'd01', 'd02', 'd05'],
-                           'd04': ['d01', 'd02', 'd03', 'd05'],
-                           'd05': ['d04'],
-                           'd06': ['d07'],
-                           'd07': ['d06'],
-                           'd08': []}
+        seed = [
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d01.html",
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d06.html",
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d08.html",
+            ]
+
+        frontier = Frontier(seed)
+        frontier.peaching()
+
+        self.link_graph = frontier.pageStructureDic()
+
+        # self.link_graph = {'d01': ['d02', 'd03', 'd04'],
+        #                    'd02': ['d03', 'd04', 'd01', 'd05'],
+        #                    'd03': ['d04', 'd01', 'd02', 'd05'],
+        #                    'd04': ['d01', 'd02', 'd03', 'd05'],
+        #                    'd05': ['d04'],
+        #                    'd06': ['d07'],
+        #                    'd07': ['d06'],
+        #                    'd08': []}
 
         self.backlinks = []
 
         self.peach_teleportation = 0.05 / len(self.link_graph)
+
+    def initFrontier(self):
+        seed = [
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d01.html",
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d06.html",
+            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d08.html",
+            ]
+
+        frontier = Frontier(seed)
+        frontier.peaching()
 
     # calculate rank value for the first step 1/N
     # debugged

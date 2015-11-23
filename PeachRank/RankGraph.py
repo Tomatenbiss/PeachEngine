@@ -68,7 +68,6 @@ class Page_Rank(object):
 
 #TODO inf
     # put everything in formula and keep track of totals
-    # debugged
     def calculate_rank(self, key):
         one = self.part_one(key)
         print "one: %f " % (one)
@@ -80,14 +79,14 @@ class Page_Rank(object):
 
         print "HIER: key: %s %f" % (key, float(self.float_format.format((self.peach_decay * (one + two) + self.peach_teleportation), 4)))
         test = self.peach_decay * (one + two) + self.peach_teleportation
-        print test
+        #print test
 
-        #self.rank_graph_new[key] = self.peach_decay * (one + two) + self.peach_teleportation
+        self.rank_graph_new[key] = self.peach_decay * (one + two) + self.peach_teleportation
 
         #self.rank_graph_new[key] = float(self.float_format.format((self.peach_decay * (one + two) + self.peach_teleportation), 4))
         #self.rank_graph_new[key] = float(self.float_format.format((self.peach_decay * (self.part_one(key) + self.part_two()) + self.peach_teleportation), 4))
-        #return self.rank_graph_new
-        return test
+        return self.rank_graph_new
+        #return test
 
 
     #calculate the difference in delta

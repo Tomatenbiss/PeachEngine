@@ -6,10 +6,6 @@ def main():
 
     rank = Page_Rank()
     rank.initial_rank()
-
-    #rank.get_backlinks('d05')
-    #rank.part_one('d02')
-
     rank.do_it()
 
 

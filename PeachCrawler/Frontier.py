@@ -87,7 +87,9 @@ class Frontier:
             sys.stderr.write('Error\n')
         return output
 
-    # Method to return the sorted list of Parent-Links with their Child-Links
+    # Method to generate a dictionary representing the page structure
+    # Dictionary-Key = Parent as String
+    # Dictionary-Value = Childs as List of Strings
     def pageStructureDic(self):
         string_list = self.pageStructure().split();
         lenght = len(string_list);
@@ -96,7 +98,7 @@ class Frontier:
         for x in range(0, lenght):
             mystring = string_list[x]
             key = mystring.split(":")
-            value = key[1].split(",")
-            tmp = { key[0]: value}
+            values = key[1].split(",")
+            tmp = { key[0]: values}
             link_graph.update(tmp)
         return link_graph

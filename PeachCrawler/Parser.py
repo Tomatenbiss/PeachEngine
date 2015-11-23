@@ -2,7 +2,6 @@
 from bs4 import BeautifulSoup
 class Parser:
 
-
     def __str__(self):
         return 'Parser of the PeachEngine-Crawler'
 
@@ -13,3 +12,4 @@ class Parser:
         for link in _soup.find_all('a'):
             _grandchildren.append(link.get('href'))
         return _grandchildren
+        

@@ -86,3 +86,17 @@ class Frontier:
         except AttributeError:
             sys.stderr.write('Error\n')
         return output
+
+    # Method to return the sorted list of Parent-Links with their Child-Links
+    def pageStructureDic(self):
+        string_list = self.pageStructure().split();
+        lenght = len(string_list);
+        link_graph = { }
+
+        for x in range(0, lenght):
+            mystring = string_list[x]
+            key = mystring.split(":")
+            value = key[1].split(",")
+            tmp = { key[0]: value}
+            link_graph.update(tmp)
+        return link_graph

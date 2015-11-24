@@ -1,5 +1,5 @@
 #Downloader for PeachEngine-Crawler
-from urllib2 import urlopen
+from urllib.request import urlopen
 import traceback
 
 # Class definition of the class Downloader.
@@ -18,6 +18,6 @@ class Downloader:
         try:
             url = urlopen(webLocation)
             html = url.read()
-        except Exception, err:
+        except Exception:
             traceback.print_exc()
         return html

@@ -1,4 +1,4 @@
-from RankGraph import Page_Rank
+from PeachRank.RankGraph import Page_Rank
 
 __author__ = 'nina'
 

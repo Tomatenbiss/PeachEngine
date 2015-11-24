@@ -16,5 +16,3 @@ frontier.peaching()
 print(frontier.pageStructure())
 #print(frontier.pageLinks())
 print(frontier.pageStructureDic())
-
-print(frontier.peaching)

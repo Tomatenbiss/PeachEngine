@@ -1,7 +1,7 @@
 #Frontier for PeachEngine-Crawlers
 
-from Downloader import Downloader
-from Parser import Parser
+from PeachCrawler.Downloader import Downloader
+from PeachCrawler.Parser import Parser
 import re
 import sys
 
@@ -34,7 +34,7 @@ class Frontier:
             childHTML = re.search('d[0-9]*\.(html|htm)?', familyTree).group()
             child = re.search('d[0-9]*', childHTML).group()
         except AttributeError:
-            print 'No child found in ', family
+            print ("No child found in", family )
         return child
 
 

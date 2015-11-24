@@ -26,7 +26,7 @@ d08:
 `# Make sure the frontier is allready done: `  
 `# frontier = Frontier(seed)`  
 `# frontier.peaching()`  
-`my_dic_structure = frontier.pageStructureDic()`
+`my_dic_structure = frontier.pageStructureDic()`  
 `# print ( my_dic_structure )`
 
 The output is the following:  
@@ -37,7 +37,7 @@ The output is the following:
 'd03': ['d04', 'd01', 'd02', 'd05'],  
 'd02': ['d03', 'd04', 'd01', 'd05'],  
 'd01': ['d02', 'd03', 'd04'],  
-'d08': ['']}
+'d08': [ ]}
   
 Note: Dictionaries in Python are not sorted
 

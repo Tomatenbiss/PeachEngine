@@ -11,6 +11,6 @@ frontier = Frontier(seed)
 frontier.peaching()
 print(frontier.pageStructure())
 
-rank = Page_Rank()
+rank = Page_Rank(frontier.pageStructureDic())
 rank.initial_rank()
 rank.do_it()

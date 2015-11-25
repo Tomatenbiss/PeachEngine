@@ -2,8 +2,8 @@
 #It will init. a frontier object and starts the method peaching.
 #This will do all the work to aquire the goal from "Uebung 1.1 Crawler"
 
-from Frontier import Frontier
-from Downloader import Downloader
+from PeachCrawler.Frontier import Frontier
+from PeachCrawler.Downloader import Downloader
 
 seed = [
     "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d01.html",

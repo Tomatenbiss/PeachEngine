@@ -1,9 +1,9 @@
 from TermFreqList import TermFreqList
 
 class Token(object):
-    def __init__(self, name, tf):
+    def __init__(self, name, docTitle, value):
         self.name = name
-        self.tf = TermFreqList(tf)
+        self.tf = TermFreqList(docTitle, value)
 
     def __lt__(self, other):
         return self.name < other.name
@@ -15,6 +15,6 @@ class Token(object):
         res = ""
         return ("(%s, df:%d) -> [%s]" % (self.name, self.tf.len(), self.tf.toString()))
 
-    def appendTF(self, tfNew):
-        x = self.tf.appendTF(tfNew)
-        return x
+    def add(self, docTitle, value):
+        self.tf.add(docTitle, value)
+        

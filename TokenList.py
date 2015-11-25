@@ -15,7 +15,12 @@ class TokenList:
         if self.contains(name):
             for token in self.tokens:
                 if token.name == name.name:
-                    token = token.appendTF(name.tf)
+                    for key in name.tf.tf.keys():
+                        if key not in token.tf.tf.keys():
+                            token.add(key, name.tf.tf[key])
+                        else:
+                            x = token.tf.tf[key]
+                            token.tf.add(key, name.tf.tf[key])
         else:
             self.tokens.append(name)
 
@@ -38,10 +43,9 @@ class TokenList:
         return tmp.tf.len()
 
     def getTermFreq(self, token, docTitle):
-        tmp = self.getTokenByName(token)
-        itf = tmp.tf
-        #for i in itf.len():
-        print("tfl:", itf.at(3))
+        doc = self.getTokenByName(token)
+        return doc.tf.getFreq(docTitle)
+
 
 
 

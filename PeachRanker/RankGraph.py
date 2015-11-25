@@ -1,30 +1,31 @@
-from Frontier import Frontier
+from PeachCrawler.Frontier import Frontier
 
 __author__ = 'nina'
 
 
 class Page_Rank(object):
 
-    def __init__(self):
+    def __init__(self, link_graph):
+        self.link_graph = link_graph
         self.peach_decay = 0.95
         self.peach_abort = 0.04
         self.peach_delta = 0.0
         self.float_format = "{0:.4f}"
         self.difference = 1.0
-        self.step = 1
+        self.step = 0
         self.rank_graph = {}
         self.rank_graph_new = {}
 
-        seed = [
-            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d01.html",
-            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d06.html",
-            "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d08.html",
-            ]
-
-        frontier = Frontier(seed)
-        frontier.peaching()
-
-        self.link_graph = frontier.pageStructureDic()
+        # seed = [
+        #     "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d01.html",
+        #     "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d06.html",
+        #     "http://people.f4.htw-berlin.de/fileadmin/user_upload/Dozenten/WI-Dozenten/Classen/DAWeb/smdocs/d08.html",
+        #     ]
+        #
+        # frontier = Frontier(seed)
+        # frontier.peaching()
+        #
+        # self.link_graph = frontier.pageStructureDic()
 
         # self.link_graph = {'d01': ['d02', 'd03', 'd04'],
         #                    'd02': ['d03', 'd04', 'd01', 'd05'],
@@ -109,33 +110,30 @@ class Page_Rank(object):
             print (x, ": ", (float(self.float_format.format(graph[x], 4))))
 
 
+    #print top of table
+    # def print_head(self):
+    #     output = []
+    #     print("Page Rank \n¯¯¯¯¯¯¯¯¯")
+    #     print("           d01    d02    d03    d04    d05    d06    d07    d08    diff")
+    #
+    #     for x in self.rank_graph:
+    #         output.append(self.rank_graph[x])
+    #     #print(float(self.float_format.format("step: 0", "[" + " ".join(output) + "]"), 4))
+    #     print("step: 0 [",  join(output), "]")
+    #
+    # #print step for 1,2,3
+    # def print_step(self):
+    #     output = []
+    #     for x in self.rank_graph_new:
+    #         output.append(self.rank_graph_new[x])
+    #     print(float(self.float_format.format(("step:", self.step, "[" + " ".join(output) + "]", self.difference), 4)))
+
+
+
     #bring it all together
-    # def do_it(self):
-    #     print ("\n+++++++++ step: ")
-    #     self.print_rank(self.rank_graph)
-    #     while self.difference >= self.peach_abort:
-    #         print ("\n+++++++++ step:", self.step)
-    #         for x in self.link_graph:
-    #             self.calculate_rank(x)
-    #             #print ("OLD:")
-    #             #self.print_rank(self.rank_graph)
-    #             #print ("NEW:")
-    #             #self.print_rank(self.rank_graph_new)
-    #
-    #         self.difference = self.calculate_difference()
-    #         print (">>>>>>DIFFERENCE<<<")
-    #         print ((float(self.float_format.format(self.difference, 4))))
-    #
-    #         self.update_ranks()
-    #         print ("NACH UP RANK")
-    #         self.print_rank(self.rank_graph_new)
-    #
-    #         self.step += 1
-
-
     def do_it(self):
         #self.print_head()
-        print ("\n+++++++++ step: 0" )
+        print ("\n+++++++++ step: ")
         self.print_rank(self.rank_graph)
         while self.difference >= self.peach_abort:
             print ("\n+++++++++ step:", self.step)

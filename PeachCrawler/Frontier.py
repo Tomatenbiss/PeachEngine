@@ -1,7 +1,7 @@
 #Frontier for PeachEngine-Crawlers
 
-from Downloader import Downloader
-from Parser import Parser
+from PeachCrawler.Downloader import Downloader
+from PeachCrawler.Parser import Parser
 import re
 import sys
 

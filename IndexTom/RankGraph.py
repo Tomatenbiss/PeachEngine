@@ -11,7 +11,7 @@ class Page_Rank(object):
         self.peach_delta = 0.0
         self.float_format = "{0:.4f}"
         self.difference = 1.0
-        self.step = 0
+        self.step = 1
         self.rank_graph = {}
         self.rank_graph_new = {}
 
@@ -110,22 +110,50 @@ class Page_Rank(object):
 
 
     #bring it all together
+    # def do_it(self):
+    #     print ("\n+++++++++ step: ")
+    #     self.print_rank(self.rank_graph)
+    #     while self.difference >= self.peach_abort:
+    #         print ("\n+++++++++ step:", self.step)
+    #         for x in self.link_graph:
+    #             self.calculate_rank(x)
+    #             #print ("OLD:")
+    #             #self.print_rank(self.rank_graph)
+    #             #print ("NEW:")
+    #             #self.print_rank(self.rank_graph_new)
+    #
+    #         self.difference = self.calculate_difference()
+    #         print (">>>>>>DIFFERENCE<<<")
+    #         print ((float(self.float_format.format(self.difference, 4))))
+    #
+    #         self.update_ranks()
+    #         print ("NACH UP RANK")
+    #         self.print_rank(self.rank_graph_new)
+    #
+    #         self.step += 1
+
+
     def do_it(self):
+        #self.print_head()
+        print ("\n+++++++++ step: 0" )
+        self.print_rank(self.rank_graph)
         while self.difference >= self.peach_abort:
             print ("\n+++++++++ step:", self.step)
             for x in self.link_graph:
                 self.calculate_rank(x)
-                print ("OLD:")
-                self.print_rank(self.rank_graph)
-                print ("NEW:")
-                self.print_rank(self.rank_graph_new)
+                # print ("OLD:")
+                # self.print_rank(self.rank_graph)
+                # print ("NEW:")
+                # self.print_rank(self.rank_graph_new)
 
             self.difference = self.calculate_difference()
             print (">>>>>>DIFFERENCE<<<")
             print ((float(self.float_format.format(self.difference, 4))))
 
             self.update_ranks()
-            print ("NACH UP RANK")
+            #self.print_step()
             self.print_rank(self.rank_graph_new)
+
+
 
             self.step += 1

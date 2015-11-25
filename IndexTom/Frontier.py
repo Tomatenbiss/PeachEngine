@@ -23,7 +23,6 @@ class Frontier:
         self.manageAutomode()
 
     # Method to get a sorted list of all crawled pages
-    # Take out sorted() -> right results?
     def pageLinks(self):
         return sorted(self.proofed)
 

@@ -110,23 +110,45 @@ class Page_Rank(object):
             print (x, ": ", (float(self.float_format.format(graph[x], 4))))
 
 
+    #print top of table
+    def print_head(self):
+        output = []
+        print("Page Rank \n¯¯¯¯¯¯¯¯¯")
+        print("           d01    d02    d03    d04    d05    d06    d07    d08    diff")
+
+        for x in self.rank_graph:
+            output.append(self.rank_graph[x])
+        print(float(self.float_format.format("step: 0", "[" + " ".join(output) + "]"), 4))
+
+    #print step for 1,2,3
+    def print_step(self):
+        output = []
+        for x in self.rank_graph_new:
+            output.append(self.rank_graph_new[x])
+        print(float(self.float_format.format(("step:", self.step, "[" + " ".join(output) + "]", self.difference), 4)))
+
+
+
     #bring it all together
     def do_it(self):
+        print self.print_head()
         while self.difference >= self.peach_abort:
-            print ("\n+++++++++ step:", self.step)
+            #print ("\n+++++++++ step:", self.step)
             for x in self.link_graph:
                 self.calculate_rank(x)
-                print ("OLD:")
-                self.print_rank(self.rank_graph)
-                print ("NEW:")
-                self.print_rank(self.rank_graph_new)
+                # print ("OLD:")
+                # self.print_rank(self.rank_graph)
+                # print ("NEW:")
+                # self.print_rank(self.rank_graph_new)
 
             self.difference = self.calculate_difference()
             print (">>>>>>DIFFERENCE<<<")
             print ((float(self.float_format.format(self.difference, 4))))
 
             self.update_ranks()
-            print ("NACH UP RANK")
+            #print self.print_step()
             self.print_rank(self.rank_graph_new)
+
+
 
             self.step += 1

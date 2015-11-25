@@ -9,7 +9,6 @@ from Token import Token
 from TermFreq import TermFreq
 from TermFreqList import TermFreqList
 from TokenList import TokenList
-from textblob import TextBlob
 from RankGraph import Page_Rank
 
 #Stemming wird erstmal nicht implementiert aufgrund der Spezifizität
@@ -104,6 +103,7 @@ def getAllDocs():
 
     frontier = Frontier(seed)
     frontier.peaching()
+    print (frontier.pageStructure())
 
     my_page_downloader = Downloader()
     my_list_of_destinations = frontier.pageLinks()
